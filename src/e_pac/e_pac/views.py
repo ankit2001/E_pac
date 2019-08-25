@@ -7,7 +7,7 @@ def home_page(request):
 	"title":"homepage",
 	"content":"its homepage"
 	}
-	return render(request,"home_pages.html",context)
+	return render(request,"home_page.html",context)
 def about_page(request):
 	context={
 	"title":"aboutpage",
@@ -15,17 +15,17 @@ def about_page(request):
 	}
 	return render(request,"home_page.html",context)
 def contact_page(request):
-	contact_form=ContactForm(request.POST or None)
-	context={
-	"title":"contactpage",
-	"content":"its contactpage",
-	"form":contact_form
-	}
-	if contact_form.is_valid():
-		print(contact_form.cleaned_data)
-	if request.method=="POST":
-		print(request.POST)
-		print(request.POST.get('fullname'))
-		print(request.POST.get('email'))
-		print(request.POST.get('content'))
-	return render(request,"contact/view.html",context)		
+    contact_form = ContactForm(request.POST or None)
+    context = {
+        "title":"Contact",
+        "content":" Welcome to the contact page.",
+        "form": contact_form
+    }
+    if contact_form.is_valid():
+        print(contact_form.cleaned_data)
+    # if request.method == "POST":
+    #     #print(request.POST)
+    #     print(request.POST.get('fullname'))
+    #     print(request.POST.get('email'))
+    #     print(request.POST.get('content'))
+    return render(request, "contact/view.html", context)
